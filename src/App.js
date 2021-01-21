@@ -1,5 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+
+
+class HelloMessage extends React.Component {
+  render() {  // afficher moi, se déclenche si changement de props, ou de state/état interne des data du composant
+    return (  // return du JSX
+      <div>
+        Salut {this.props.name} {this.props.famille}
+      </div>
+    );
+  }
+}
+
 
 function App() {
   return (
@@ -17,6 +30,9 @@ function App() {
         >
           Learn React
         </a>
+        <br/>
+        <HelloMessage name="Thomas" />
+
       </header>
     </div>
   );
