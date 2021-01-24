@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+It also displays all components extracted from first page of https://fr.reactjs.org/
+
 ## Available Scripts
 
 In the project directory, you can run:
