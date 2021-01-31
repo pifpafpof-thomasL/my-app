@@ -39,18 +39,6 @@ class TodoApp extends React.Component {
 
       console.log("handleSubmit this.state", this.state)
     }
-    
-    handleClickDelMe = (id, e) => {
-      console.log("handleClickDelMe", id)
-      const array = this.state.items
-      const index = array.findIndex(arrayItem=> arrayItem.id === id);
-      if (index > -1) {
-        array.splice(index, 1);
-      }      
-      this.setState({
-        items: array
-      });
-    }
 
     handleClickDelMe = (id, e) => {
       console.log("handleClickDelMe", id)
