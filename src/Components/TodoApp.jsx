@@ -39,7 +39,7 @@ class TodoApp extends React.Component {
 
       console.log("handleSubmit this.state", this.state)
     }
-               //   {/* <TodoList items={this.state.items} /> */}
+    
     handleClickDelMe = (id, e) => {
       console.log("handleClickDelMe", id)
       const array = this.state.items
@@ -71,7 +71,7 @@ class TodoApp extends React.Component {
         <div>
           <h3>À faire</h3>
           {"<TodoList>" }
-          <TodoList itemsProps={this.state.items} />
+            <TodoList itemsProps={this.state.items} handleClickDelMe={this.handleClickDelMe} />
           {"<TodoList/>" }
         <br/>
 
@@ -91,27 +91,18 @@ class TodoApp extends React.Component {
             <br/>
           </Form>
 
-          {/* <div className="row mx-md-n5">
-            <div className="col px-md-5">
-              <div className="p-3 border bg-light">Custom column padding</div></div>
-            <div className="col px-md-5">
-              <div className="p-3 border bg-light">Custom column padding</div></div>
-          </div>          
-          <br></br> */}
-
           <Button onClick={this.handleClickDeleteAll}>
               Vider la liste
           </Button>
           <br/>
           <p className="mt-20"> - </p>
-
-            <label >
-                Ligne2 input zone / on
-            </label>
-            <input 
-              style={{marginLeft: '40px'}}
-              onChange={e => this.setState({ ligne2: e.target.value })}
-            />
+          <label >
+              input state.ligne2 (not in todo list)
+          </label>
+          <input 
+            style={{marginLeft: '40px'}}
+            onChange={e => this.setState({ ligne2: e.target.value })}
+          />
         </div>
       );
     }
@@ -123,28 +114,28 @@ class TodoApp extends React.Component {
   }
   
   
-  //<TodoList itemsProps={} />
   class TodoList extends React.Component {
-    handleClickDelMe = (id, e) => {
-      console.log("handleClickDelMe", id)
-      const array = this.props.itemsProps
-      const index = array.findIndex(arrayItem=> arrayItem.id === id);
-      if (index > -1) {
-        array.splice(index, 1);
-      }      
-      this.setState({
-        items: array
-      });
-      console.log("<TodoList>this.props", this.props)
-    }
+
+    // interdit de mettre à jour les props (ils sont en lecture seuls)
+    // handleClickDelMe = (id, e) => {
+    //   console.log("handleClickDelMe", id)
+    //   const array = this.props.itemsProps
+    //   const index = array.findIndex(arrayItem=> arrayItem.id === id);
+    //   if (index > -1) {
+    //     array.splice(index, 1);
+    //   }      
+    //   // this.setState({   // does not exist
+    //   //   items: array
+    //   // });
+    //   console.log("<TodoList>this.props", this.props)
+    // }
 
     render() {
       return (
         <ul>
           {this.props.itemsProps.map(item => (
-          
               <li key={item.id}>{item.text}
-                <Button className="mx-5" onClick={()=>this.handleClickDelMe(item.id)}>
+                <Button className="mx-5" onClick={()=>this.props.handleClickDelMe(item.id)}>
                   Del me
                 </Button>
               </li>          
