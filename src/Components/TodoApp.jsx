@@ -115,7 +115,6 @@ class TodoApp extends React.Component {
     //   // this.setState({   // does not exist
     //   //   items: array
     //   // });
-    //   console.log("<TodoList>this.props", this.props)
     // }
 
     render() {
